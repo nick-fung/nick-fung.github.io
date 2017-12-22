@@ -3,8 +3,8 @@
 		heatOptions = {
 			tileOpacity: 1,
 			heatOpacity: 1,
-			radius: 25,
-			blur: 15
+			radius: 3,
+			blur: 6
 		};
 
 	function status( message ) {
@@ -14,16 +14,26 @@
 	stageOne();
 
 	function stageOne () {
+        $.getJSON("https://nick-fung.github.io/projects/commute/data/LocationHistory.json", function(){
+            $.each(data, function(index,value){
+                console.log(data);
+            });
+        });
+
 		var dropzone;
 
 		// Initialize the map
-		map = L.map( 'map' ).setView( [0,0], 2 );
+		map = L.map( 'map' ).setView( [49.259769, -123.221387], 14 );
 		L.tileLayer( 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution: 'location-history-visualizer is open source and available <a href="https://github.com/theopolisme/location-history-visualizer">on GitHub</a>. Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors.',
 			maxZoom: 18,
 			minZoom: 2
 		} ).addTo( map );
 
+        
+
+//        /* I just want to use my own data. Ignore uploading
+         
 		// Initialize the dropzone
 		dropzone = new Dropzone( document.body, {
 			url: '/',
@@ -107,20 +117,13 @@
 		$( '#numberProcessed' ).text( numberProcessed.toLocaleString() );
 
     $( '#launch' ).click( function () {
-      var $email = $( '#email' );
-      if ( $email.is( ':valid' ) ) {
         $( this ).text( 'Launching... ' );
-        $.post( '/heatmap/submit-email.php', {
-          email: $email.val()
-        } )
+        $.post( '/heatmap/submit-email.php', {} )
         .always( function () {
           $( 'body' ).addClass( 'map-active' );
           $done.fadeOut();
           activateControls();
         } );
-      } else {
-        alert( 'Please enter a valid email address to proceed.' );
-      }
     } );
 
 		function activateControls () {
