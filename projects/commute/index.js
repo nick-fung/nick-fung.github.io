@@ -17,7 +17,17 @@
 
         loadJSON(function(response){
             var actual_JSON = JSON.parse(response);
-            console.log(actual_JSON);
+            actual_JSON.locations.forEach(function(element, index){
+                if(index > 0)
+                    return;
+                console.log(typeof(element.timstampMs));
+                console.log(element.timestampMs);
+                console.log(1513650664003);
+                var temp1 = new Date(1513650664003);
+                var temp2 = new Date(element.timestampMs);
+                console.log(temp1.toDateString());
+                console.log(temp2.toDateString());
+            });
         });
         
         var dropzone;
