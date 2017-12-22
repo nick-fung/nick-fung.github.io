@@ -14,7 +14,7 @@
 	stageOne();
 
 	function stageOne () {
-        $.getJSON("https://nick-fung.github.io/projects/commute/data/LocationHistory.json", function(){
+        $.getJSON("https://nick-fung.github.io/projects/commute/data/test.json", function(){
             $.each(data, function(index,value){
                 console.log(data);
             });
