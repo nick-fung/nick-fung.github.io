@@ -8,30 +8,34 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
     <body>
-        <div class="navbar">
-            <a data-easing="linear" class="navigation_button smooth" href="#about_me">About Me</button>
-            <a class="navigation_button smooth" href="#projects" >Projects</button>
-            <a class="navigation_button smooth" href="#experience">Experience</a>
+        
+        <!-- Welcome header -->
+        <div id="header">
+            <h1>Hi, I'm Nick.</h1>
+        </div>
+        <!-- Navigation Bar and Buttons         -->
+        <div id="navbar">
+            <button type="button" class="navigation_button" onClick="scrolly('about_me')">About Me</button>
+            <button type="button" class="navigation_button" onClick="scrolly('projects')">Projects</button>
+            <button type="button" class="navigation_button" onClick="scrolly('experience')">Experience</button>
         </div>
 
-        <div class="flex_container">
-            <div class="flex_item" id="intro">
-                <h1>Hi, I'm Nick.</h1>
+        <!-- Main Container -->
+            <div id="main">
+                <div id="about_me">
+                    <h1>About Me</h1>
+                    <img src="images/profile.jpg" alt="Me" id="profile">
+                    <p style="text-align: justify; text-align-last: center;">Originally from Hong Kong, I'm currently studying my third year of Computer Engineering at the University of British Columbia. Right now, I'm interested in Mathematics, Finance, and Digital Systems Design. When I'm not studying, you can find me working out, or helping out with <a href="https://nwhacks.io" target="_blank">nwHacks</a>.</p>
+                </div>
+                <div id="projects">
+                    <h1>Projects</h1>
+                </div>
+                <div id="experience">
+                    <h1>Experience</h1>
+                </div>
             </div>
-
-            <div id="about_me" class="flex_item">
-                <h1>About Me</h1>
-                <img src="images/profile.jpg" alt="My ugly mug" id="profile">
-                <br>
-                <p>Originally from Hong Kong, I'm currently studying my third year of Computer Engineering at the University of British Columbia.  </p>
-            </div>
-        </div>
-                <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="assets/js/smooth-scroll.js"></script>
-        <script>
-            var scroll = new SmoothScroll('a[href*="#"]',{
-                speed:1000
-            });
-        </script>
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script type="text/javascript" src="assets/js/zenscroll-min.js"></script>
     </body>
 </html>

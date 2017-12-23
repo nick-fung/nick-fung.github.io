@@ -8,16 +8,25 @@ html {
     background-position: top left,					center center;
     background-repeat: repeat,						none;
     background-size: auto,						cover;
-    overflow: hidden;
 }
 
-html, body{
+html, body, section{
     height: 100%;
+    font-family: Raleway, Roboto, Times;
 }
+
+html{
+    padding-top: 5em;
+}
+
+body{
+    overflow: scroll;
+}
+
+
 a:link    {
     /* Applies to all unvisited links */
     text-decoration: none;
-    font-weight:      bold;
 } 
 a:visited {
     /* Applies to all visited links */
@@ -33,52 +42,69 @@ a:active  {
     /* Applies to activated links */
     text-decoration:  underline;
     font-weight:      bold;
-    background-color: black;
     color: white;
 } 
 
-.flex_container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    overflow: scroll;
-    align-items: center;
+
+#header{ color: white;
+    width: 40%;
+    margin: 30vh auto 2em auto; 
     text-align: center;
-    margin-top: 6%;
+}
+
+.wrapper{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 90%;
+    overflow: scroll;
 }
 
-.flex_item{
-    margin-top: 50vh;
-    margin-bottom: 50vh;
-    background-color: white;
-    width: 20%;
-    font-family: Roboto, Times;
-    padding: 5em 2em 5em 2em;
+#main{
+    background: white;
+    color: grey;
+    width: 30%;
+    margin: 70vh auto 70vh auto;
+    padding: 2em 2em;
 }
 
-#intro{
-    background-color: transparent;
-    color: white;
-    margin-top: 20vh;
+#main p{
+    font-size: 14pt;
+}
+
+
+#footer{
+    background: white;
+    color: grey;
 }
 
 #about_me{
-    color: grey;
+    text-align: center;
+    margin: auto;
 }
 
 #profile{
     width: 50%;
-    height: 60%
+    margin: 5% 0%;
 }
 
-.navbar{
-    background: transparent;
-    text-align: center;
+.sticky{
     position: fixed;
     width: 100%;
-    margin-top: 15px;
     top: 0;
+}
+
+.sticky + #main{
+    padding-top: 5em;
+}
+
+#navbar{
+    background: transparent;
+    text-align: center;
+    overflow: hidden;
+    width: 100%;
+    left: 0;
 }
 
 .navigation_button{
@@ -86,8 +112,8 @@ a:active  {
     border: transparent;
     border-radius: 1em;
     color: white;
+    margin-top: 1em;
     padding: .6em 3em .6em 3em;
-    font-family: Roboto, Times;
     font-weight: bold;
     font-size: 14pt;
     transition-duration: 0.5s;
@@ -101,20 +127,22 @@ a:active  {
 
 ::-webkit-scrollbar-track
 {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
-    background: transparent;
+    background: rgba(255,255,255,.3);
 }
 
 ::-webkit-scrollbar
 {
     width: 8px;
-    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb
 {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: rgba(255,255,255,0.3);
+    background:white;
+}
+
+::-webkit-scrollbar-corner
+{
+    background: transparent;
 }
