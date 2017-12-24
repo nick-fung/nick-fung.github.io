@@ -24,6 +24,7 @@ body, .smooth-container { scroll-behavior: smooth }
 p{
     font-size: 15pt; 
     text-align: justify; 
+    text-justify: kashida;
     text-align-last: left;
 }
 
@@ -75,20 +76,20 @@ a:active  {
     color: grey;
     height: 200vh;
     margin: 70vh auto 10vh auto;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 5% 5% 2% 5%;
 }
 
-#footer{
-    background: white;
+footer{
     color: grey;
+    text-align: center;
 }
 
 
 #main > *{
     text-align: center;
     width: 90%; 
-    margin: 10% auto;
+    margin: 0 auto;
+    padding: 0;
 }
 
 nav{
