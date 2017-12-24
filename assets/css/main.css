@@ -3,11 +3,11 @@
 
 html {
     background-color: #313a3d;
-    background-attachment: fixed,						fixed;
+    background-attachment: fixed,fixed;
     background-image: url("images/overlay.png"), url("../../images/hong_kong_skylight.jpg");
-    background-position: top left,					center center;
-    background-repeat: repeat,						none;
-    background-size: auto,						cover;
+    background-position:center;
+    background-repeat: repeat,none;
+    background-size: auto, cover;
 }
 
 html, body, section{
@@ -17,13 +17,14 @@ html, body, section{
 
 html{
     font-family: Raleway, Roboto, Times;
-    padding-top: 5em;
 }
+
+body, .smooth-container { scroll-behavior: smooth }
 
 p{
     font-size: 15pt; 
     text-align: justify; 
-    text-align-last: center;
+    text-align-last: left;
 }
 
 
@@ -49,101 +50,80 @@ a:active  {
 } 
 
 #container{
-    position: fixed;
+    display: block;
     overflow-y: scroll; 
     overflow-x: hidden;
-    width: 99.5%;
+    width: 100%;
     height: 90%;
+    bottom: 0;
     text-align: center;
 }
 
-#header{ color: white;
-    width: 40%;
-    margin: 30vh auto 2em auto; 
+#header{ 
+    color: white;
+    width: 100%;
+    margin-top: 30vh;
+    margin-bottom: 30vh;
     text-align: center;
 }
-
 #main{
+    display: flex;
+    flex-flow: column nowrap;
     background: white;
+    width: 500px;
     color: grey;
-    width: 35%;
-    margin: 70vh auto;
-    padding: 0 2em;
+    margin: 70vh auto 0 auto;
+    padding-left: 5%;
+    padding-right: 5%;
 }
-
 
 #footer{
     background: white;
     color: grey;
 }
 
+
 #main > *{
     text-align: center;
-    padding: 3em 1.5em;
-    
+    width: 90%; 
+    margin: 0 auto;
+    padding: 20% 0 20% 0;
 }
 
-#profile{
-    width: 50%;
-    margin: 5% 0%;
-}
-
-.sticky{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,0.7);
-}
-
-
-#navbar{
+nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     background: transparent;
+    justify-content: center;
+    width: 100%;
     text-align: center;
-    overflow: visible;
-    width: 100%;
-    height: 5em;
-    left: 0;
-    margin-top: 1em;
-    color: white
 }
 
-.navigation_button{
-    background: transparent;
-    border: transparent;
+nav > button{
+    background: none;
+    border: none;
+    outline: 0;
     border-radius: 1em;
-    color: inherit;
-    padding: .6em 3em .6em 3em;
+    color: white;
+    margin: 1em;
+    padding: .5em;
     font-weight: bold;
     font-size: 14pt;
-    transition-duration: 0.5s;
-    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    cursor: pointer;
 }
 
-.navigation_button:hover{
-    background: rgba(0,0,0,0.1);
-}
-
-
-::-webkit-scrollbar-track
-{
-    border-radius: 10px;
-    background: rgba(255,255,255,.3);
+@media screen and (max-device-width: 500px){
+ #main{
+     width: 95%;
+     padding: 0;
+    }
 }
 
 ::-webkit-scrollbar
 {
     display: none;
-    width: 8px;
 }
 
-::-webkit-scrollbar-thumb
-{
-    border-radius: 10px;
-    background:white;
-}
-
-::-webkit-scrollbar-corner
-{
-    background: transparent;
-}
