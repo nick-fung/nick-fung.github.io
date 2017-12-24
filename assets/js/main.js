@@ -4,7 +4,7 @@ $('button').addClass('hvr-sink');
 
 function scrolly(targetElement){
     var container = document.getElementById("container");
-    var containScroller = zenscroll.createScroller(container, scrollDuration, 0);
+    var containScroller = zenscroll.createScroller(container, scrollDuration, 50);
     var target = document.getElementById(targetElement);
     var buttons = document.getElementsByTagName("buttons");
      
