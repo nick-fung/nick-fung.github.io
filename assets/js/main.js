@@ -12,7 +12,7 @@ var sticky = navbar.offsetTop;
 sticky *= 1.25;
 var container = document.getElementById("container");
 
-//$('#container').bind('mousewheel DOMMouseScroll', function (e) { return false; });
+$('#container').bind('mousewheel DOMMouseScroll', function (e) { return false; });
 
 $('#container').scroll(function(){
 
