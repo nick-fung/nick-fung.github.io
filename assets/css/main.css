@@ -22,10 +22,10 @@ html{
 body, .smooth-container { scroll-behavior: smooth }
 
 p{
-    font-size: 15pt; 
+    font-size: 1.2em; 
     text-align: justify; 
-    text-justify: kashida;
     text-align-last: left;
+    word-wrap: normal;
 }
 
 
@@ -73,8 +73,9 @@ a:active  {
     justify-content: space-between;
     background: white;
     width: 500px;
+    max-width: 95%;
     color: grey;
-    height: 200vh;
+    height: 250vh;
     margin: 70vh auto 10vh auto;
     padding: 5% 5% 2% 5%;
 }
@@ -86,11 +87,12 @@ footer{
 
 
 #main > *{
+    display: block;
     text-align: center;
     width: 90%; 
     margin: 0 auto;
-    padding: 0;
 }
+
 
 nav{
     display: flex;
@@ -107,7 +109,7 @@ nav > button{
     border: none;
     outline: 0;
     border-radius: 1em;
-    color: white;
+    color: rgba(255,255,255,1);
     margin: 1em;
     padding: .5em;
     font-weight: bold;
@@ -115,13 +117,30 @@ nav > button{
     transition-duration: 0.3s;
     -webkit-transition-duration: 0.3s;
     cursor: pointer;
+    -webkit-animation-duration: 5s;
+}
+
+nav > button:hover{
+    color: rgba(255,255,255,.5);
+}
+
+nav > button:active{
+    -webkit-transform: translateY(.5em);
+    transform: translateY(.5em);
 }
 
 @media screen and (max-device-width: 500px){
- #main{
-     width: 95%;
-     padding: 0;
+    #main{
+        width: 95%;
+        padding: 10% 1%;
+    } 
+    p{
+        font-size: 1.1em;
+    }    
+    nav > button:hover{
+        color: white;
     }
+
 }
 
 ::-webkit-scrollbar

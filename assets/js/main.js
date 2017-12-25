@@ -1,6 +1,7 @@
 // Scroll Duration in milliseconds
 const scrollDuration = 500;
-$('button').addClass('hvr-sink');
+$('button').addClass('animated fadeInDown');
+$('#header').addClass('animated fadeInDown');
 
 function scrolly(targetElement){
     var container = document.getElementById("container");
