@@ -18,7 +18,8 @@ function initMap() {
 
     heatmap = new google.maps.visualization.HeatmapLayer({
         data: getPoints(),
-        map: map
+        map: map,
+        radius: 6
     });
 }
 
@@ -47,29 +48,28 @@ function changeGradient() {
 }
 
 function changeRadius() {
-    heatmap.set('radius', heatmap.get('radius') ? null : 20);
+    if(heatmap.get('radius') >= 10)
+        heatmap.set('radius', 4);
+    else
+        heatmap.set('radius', heatmap.get('radius')+1);
 }
 
-function changeOpacity() {
-    heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
-}
 
-// Heatmap data: 500 Points
 function getPoints() {
     var locationsArray = [];
+    var properties = [];
     
-/*     $.getJSON("https://nick-fung.github.io/data/test.json", function(data){ */
-         $.each(locations, function(index,location){
-            // console.log(location.latitudeE7/10000000);
-            // console.log(location.longitudeE7/10000000);
-             var location = new google.maps.LatLng(location.latitudeE7/10000000,location.longitudeE7/10000000);
-             var type = typeof location.latitudeE7;
-             console.log(type);
-             if (index == 50)
-                 return false;
-             locationsArray.push(location);
-         });
-        // });
-    /* }); */
+    $.getJSON("https://nick-fung.github.io/data/test.json", function(data){
+        $.each(data.locations, function(index,location){
+            var coordinate = new google.maps.LatLng(location.latitudeE7/10000000,location.longitudeE7/10000000);
+            locationsArray.push(coordinate);
+            var keys = Object.keys(location);
+
+            if (parseInt(location.timestampMs)<1504800000000){
+                console.log("Done, " + index + " data points processed");
+                return false;
+            }
+        });
+    });
     return locationsArray;
 }
