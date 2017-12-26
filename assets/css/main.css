@@ -117,10 +117,17 @@ nav > button{
     cursor: pointer;
 }
 
+nav > button:hover{
+    color: rgba(255,255,255,0.5);
+}
+
 @media screen and (max-device-width: 500px){
  #main{
      width: 95%;
      padding: 0;
+    }
+    nav > button:hover{
+        color: white;
     }
 }
 
