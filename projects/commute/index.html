@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location History Visualizer – Heatmap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Visualize your collected Google Location History data using an interactive heatmap directly in your browser.">
+    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css"/>
+</head>
+<body>
+<div class="visualizer">
+
+    <!-- Shown before the heatmap is displayed -->
+    <div class="container">
+        <div class="content">
+            <!-- Intro, before data has been uploaded -->
+            <div id="intro" class="content-box">
+                <h2>Location History Visualizer</h2>
+                <p>Welcome to <b>Location History Visualizer</b>, a tool for visualizing your collected Google <a href="https://google.com/locationhistory" target="_blank">Location History</a> data with heatmaps. <i>Don't worry&mdash;all processing and visualization happens directly on your computer, so rest assured that nobody is able to access your Location History but you... and Google, of course.</i></p>
+                <p>To start off, you'll need to go to <a href="https://google.com/takeout" target="_blank">Google Takeout</a> to download your Location History data: on that page, deselect everything except Location History by clicking "Select none" and then reselecting "Location History". Then hit "Next" and, finally, click "Create archive". Once the archive has been created, click "Download". Unzip the downloaded file, and open the "Location History" folder within. <b>Then, drag and drop <i>LocationHistory.json</i> from inside that folder onto this page.</b> Let the visualization begin!</p>
+                <p class="fallback">Alternatively, select your <b>LocationHistory.json</b> file directly: <input name="file" type="file" id="file"></input></p>
+                <p class="credit">An <a target="_blank" href="https://github.com/theopolisme/location-history-visualizer">open source</a> project by the makers of <a href="/">Location History Visualizer Pro</a>.</p>
+            </div>
+
+            <!-- Shown in interim while processing is in progress -->
+            <div id="working" class="content-box hidden">
+                <h2>Processing data...</h2>
+                <div class="loading">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <p><span id="currentStatus">Waking up...</span></p>
+                <p>This may take a while... sit back, get a cup of tea or something.</p>
+                <p><i>Why does it take so long?</i> Depending on how long Google's been tracking your location, you may have hundreds of thousands of [latitude, longitude] pairs, every one of which must be loaded, analyzed, and plotted. That's a lot of dots.</p>
+            </div>
+
+            <!-- Content displayed once processing complete -->
+            <div id="done" class="content-box hidden">
+                <h2>Render complete!</h2>
+                <button id="launch">Launch heatmap</button>
+                <p>Usage tips: <i>Zoom</i> by scrolling, double-clicking, or using the buttons in the upper lefthand corner. <i>Navigate</i> by clicking and dragging. Hover over the menu in the lower lefthand corner to customize the heatmap rendering.</p>
+                <p class="credit">An <a target="_blank" href="https://github.com/theopolisme/location-history-visualizer">open source</a> project by the makers of <a href="/">Location History Visualizer Pro</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appear when heatmap is displayed -->
+    <div id="controls">
+        <div class="title">
+            Location History Visualizer
+            <span>(hover for additional controls)</span>
+        </div>
+        <div class="control-block">
+            <label for="radius">Point radius</label>
+            <input type="range" min="1" max="30" id="radius" class="control">
+        </div>
+        <div class="control-block">
+            <label for="blur">Blur radius</label>
+            <input type="range" min="1" max="25" id="blur" class="control">
+        </div>
+        <div class="control-block">
+            <label for="heatOpacity">Heat opacity</label>
+            <input type="range" min="0" max="1" step="0.05" id="heatOpacity" class="control">
+        </div>
+        <div class="control-block">
+            <label for="tileOpacity">Map opacity</label>
+            <input type="range" min="0" max="1" step="0.05" id="tileOpacity" class="control">
+        </div>
+        <div class="control-block actions">
+            <button id="reset">Reset to defaults</button>
+        </div>
+    </div>
+
+    <!-- The map, populated by leaflet.js -->
+    <div id="map"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/3.8.4/dropzone.min.js"></script>
+<script src="lib/leaflet.heat.min.js"></script>
+<script src="lib/prettysize.js"></script>
+<script src="lib/oboe-browser.min.js"></script>
+<script src="index.js"></script>
+
+<!-- BEGIN GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55418641-9', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- END GOOGLE ANALYTICS -->
+</body>
+</html>
