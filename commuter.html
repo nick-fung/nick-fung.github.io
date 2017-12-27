@@ -5,47 +5,55 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="Visualize your collected Google Location History data using an interactive heatmap directly in your browser.">
         <style>
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
-#map {
-    height: 100%;
-}
+        
       /* Optional: Makes the sample page fill the window. */
       html, body {
           height: 100%;
           margin: 0;
           padding: 0;
       }
-      #floating-panel {
-          position: absolute;
-          top: 10px;
-          left: 25%;
-          z-index: 5;
-          background-color: #fff;
-          padding: 5px;
-          border: 1px solid #999;
-          text-align: center;
-          font-family: 'Roboto','sans-serif';
-          line-height: 30px;
-          padding-left: 10px;
-      }
-      #floating-panel {
-          background-color: #fff;
-          border: 1px solid #999;
-          left: 25%;
-          padding: 5px;
-          position: absolute;
-          top: 10px;
-          z-index: 5;
-      }
+
+      /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        #floating-panel {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            top: 6%;
+            left: 1%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+        
+        #floating-panel > button {
+            margin: 5% 1%;
+        }
+
+        #floating-panel p{
+            margin: 0;
+        }
+
         </style>
     </head>
 
     <body>
         <div id="floating-panel">
             <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-            <button onclick="changeGradient()">Change gradient</button>
-            <button onclick="changeRadius()">Change radius</button>
+            <button onclick="changeGradient()">Change Color</button>
+            <p>Radius</p>
+            <input title="Radius" type="range" min="2" max="10" value="6" id="radius">
+            <p>Intensity</p>
+            <input title="Intensity" type="range" min="0" max="20" value="15"  id="intensity">
         </div>
         <div id="map"></div>
 
