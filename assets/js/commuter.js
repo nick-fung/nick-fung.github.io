@@ -1,6 +1,3 @@
-$(document).ready(function(){
-    
-});
 
 document.getElementById('radius').oninput = function(){
     heatmap.set('radius', this.value);
@@ -12,23 +9,23 @@ document.getElementById('intensity').oninput = function(){
 
 
 var map, heatmap;
-
+var drawingManager;
+var placeIdArray = [];
+var polylines = [];
+var snappedCoordinates = [];
+var apiKey = "AIzaSyBnOBuIJmdMg8fXt3kD2VLhamWsdV1wmeAi"
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
         center: {lat: 49.259725, lng: -123.217855},
     });
+    
+    loadHeatmap();
 
-    heatmap = new google.maps.visualization.HeatmapLayer({
-        data: getPoints(),
-        map: map,
-        radius: 6,
-        maxIntensity: 15
-    });
 }
-
-function toggleHeatmap() {
-    heatmap.setMap(heatmap.getMap() ? null : map);
+ 
+function showHeatmap() {
+    heatmap.setMap(map);
 }
 
 function changeGradient() {
@@ -59,15 +56,33 @@ function changeRadius() {
 }
 
 
-function getPoints() {
+function loadHeatmap() {
+    
     var locationsArray = [];
     
-    $.getJSON("https://nick-fung.github.io/data/test.json", function(data){
-        $.each(data.locations, function(index,location){
-            var coordinate = new google.maps.LatLng(location.latitudeE7/10000000,location.longitudeE7/10000000);
-            locationsArray.push(coordinate);
-        });
-        console.log("Done, " + locationsArray.length + " data points processed");
+    $.ajax({
+        type: "GET",
+        url: "https://nick-fung.github.io/data/test.json", 
+        dataType: "json",
+        success: function(data){
+            // Only process 100 points at a time
+            $.each(data.locations, function(index,location){
+                var coordinate = new google.maps.LatLng(location.latitudeE7/10000000,location.longitudeE7/10000000);
+                locationsArray.push(coordinate);
+            });
+            console.log("Done, " + locationsArray.length + " data points processed");
+        },
+        async: false
+    }
+    );
+    
+    heatmap = new google.maps.visualization.HeatmapLayer({
+        data: locationsArray,
+        map: map,
+        radius: 6,
+        maxIntensity: 15
     });
-    return locationsArray;
+
+    heatmap.setMap(map);
 }
+

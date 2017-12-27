@@ -22,9 +22,8 @@ html{
 body, .smooth-container { scroll-behavior: smooth }
 
 p{
-    font-size: 15pt; 
+    font-size: 110%;
     text-align: justify; 
-    text-justify: kashida;
     text-align-last: left;
 }
 
@@ -50,6 +49,39 @@ a:active  {
     color: white;
 } 
 
+footer{
+    color: grey;
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: transparent;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+nav > button{
+    background: none;
+    border: none;
+    outline: 0;
+    border-radius: 1em;
+    color: white;
+    margin: 2% 5%;
+    font-weight: bold;
+    font-size: 110%;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+nav > button:hover{
+    color: rgba(255,255,255,0.5);
+}
+
 #container{
     display: block;
     overflow-y: scroll; 
@@ -67,65 +99,33 @@ a:active  {
     margin-bottom: 30vh;
     text-align: center;
 }
-#main{
+
+#profile_picture{
+    width: 50%;
+    min-width: 150px;
+}
+
+.flex_container{
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     background: white;
-    width: 500px;
+    max-width: 500px;
+    width: 95%;
     color: grey;
     height: 200vh;
     margin: 70vh auto 10vh auto;
     padding: 5% 5% 2% 5%;
 }
 
-footer{
-    color: grey;
-    text-align: center;
-}
-
-
-#main > *{
+.flex_item{
     text-align: center;
     width: 90%; 
     margin: 0 auto;
-    padding: 0;
 }
 
-nav{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    background: transparent;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-}
-
-nav > button{
-    background: none;
-    border: none;
-    outline: 0;
-    border-radius: 1em;
-    color: white;
-    margin: 1em;
-    padding: .5em;
-    font-weight: bold;
-    font-size: 14pt;
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    cursor: pointer;
-}
-
-nav > button:hover{
-    color: rgba(255,255,255,0.5);
-}
 
 @media screen and (max-device-width: 500px){
- #main{
-     width: 95%;
-     padding: 0;
-    }
     nav > button:hover{
         color: white;
     }
