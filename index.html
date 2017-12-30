@@ -5,16 +5,16 @@
 		<title>Nicholas Fung - Computer Engineer</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main-min.css" />
 		<link rel="stylesheet" href="assets/css/animate.css" />
         <link href="assets/css/hover.css" rel="stylesheet">
 	</head>
     <body>
         <nav>
             <!-- <button type="button" onClick="scrolly('header')">Home</button> -->
-            <button type="button" onClick="scrolly('about_me')">About</button>
-            <button type="button" onClick="scrolly('projects')">Projects</button>
-            <button type="button" onClick="scrolly('experience')">Experience</button>
+            <button type="button" id="about_me_btn">About</button>
+            <button type="button" id="projects_btn">Projects</button>
+            <button type="button" id="experience_btn">Experience</button>
         </nav>
 
         <div id="container">     
@@ -28,21 +28,55 @@
                 <div id="about_me" class="flex_item">
                     <h1>About Me<br></h1>
                     <img src="images/profile.jpg" id="profile_picture" alt="Me">
-                    <p><br>Originally from Hong Kong, I'm currently a third year Computer Engineering student studying at the University of British Columbia. I'm primarily interested in Hardware Architecture, Mathematics, and Finance. While I'm not studying, I'm helping plan out <a href="https://nwhacks.io">nwHacks</a>, one of the biggest hackathons in the Pacific Northwest.</p>
+                    <p><br>Originally from Hong Kong, I'm currently a third year Computer Engineering student studying at the University of British Columbia. I'm primarily interested in Hardware Architecture, Mathematics, and Finance. While I'm not studying, I'm helping plan out <a target="_blank" href="https://nwhacks.io">nwHacks</a>, one of the biggest hackathons in the Pacific Northwest.</p>
                 </div>
-                <div id="projects">
+                <div id="projects" class="flex_item">
                     <h1>Projects</h1>
-                    <h2>Travel Pattern Analysis</h2>
-                    <h2>nwHacks</h2>
-                    <h2></h2>
+                    <h2>nwHacks 2018</h2>
+                    <p>Executive of the organizing team for nwHacks 2018, click <a id="nwHacks_btn">here</a> to learn more.</p>
+
+                                       <p></p>
+                    <h2>Web Development</h2>
+                    <p>This website is my first time learning HTML, CSS and Javascript. During the course of my Winter break, I put aside time to learn some web development, as Computer Engineering courses typically don't provide any content related to this.</p>
+                    <h3>Travel Pattern Analysis</h3>
+                    <p>Coming soon...</p>
+                    
+                    
+                    <div class="modal_background">
+                        <div id="nwHacks" class="modal_item">
+                            <div class="close">&times;</div>
+                            <header>
+                                <h1>nwHacks 2018</h1>
+                            </header>
+                            <div class="modal_content">
+
+                                <img src="images/nwhacks.png" alt="nwHacks Logo" style="width:25%; min-width: 150px">
+                                <h2>What is a hackathon?</h2>
+                                <p>A hackathon is an event where teams of 2-5 people collaborate on an application within the specified time limit (nwHacks is 24 hours long). Prizes are awarded to the most creative, polished and theme-specific projects or “hacks”. The winners are chosen by a panel of judges comprised of industry professionals.</p>
+
+                                <h2>About nwHacks</h2>
+                                <p>nwHacks is Western Canada's largest hackathon, with over 600 student hackers coming from throughout North America. nwHacks is a student led iniative, and is run by a group of 20 students from UBC.<br><br>Our team is devoted to fostering creativity, as well as giving students the opportunity to network within the tech community. Over the course of 2 days, hackers can expect a variety of great food, fun activities, informative workshops held by our sponsors, and much much more.</p>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                            </div> 
+                        </div>
+                    </div>
+
+
                 </div>
-                <div id="experience">
+                <div id="experience" class="flex_item">
                     <h1>Work Experience</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
-                <footer>
-                    <p><em>Contact</em></p>
-                </footer>
+                <div id="contact" class="flex_item">
+                    <h2>Contact Me:</h2>
+                    <a target="_blank" href="mailto:nicholas.fung@alumni.ubc.ca"><img class="logo" src="images/mail.png"></a>
+                    <a target="_blank" href="https://github.com/nick-fung"><img class="logo" src="images/github.png"></a>
+                    <a target="t_blank" href="https://www.linkedin.com/in/nicholas-fung-b1b2b412b/"><img class="logo" src="images/linkedin.png"></a>
+                </div>
             </div>
         </div>   
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
