@@ -3,21 +3,15 @@ const scrollDuration = 500;
 
 $(document).ready(function(){
     var buttons = document.getElementsByTagName("buttons");
-
-    container = document.getElementById("container");
-    containScroller = zenscroll.createScroller(container, scrollDuration, 0);
-
-    
+   
     $("button").addClass("animated fadeInDown");
     $('#header').addClass("animated fadeInDown");
 
     // Navbar buttons
-    $('#about_me_btn').click(function(){
-        scrolly("about_me")});
-    $('#projects_btn').click(function(){
-        scrolly("projects")});
-    $('#experience_btn').click(function(){
-        scrolly("experience")});
+    $('nav button').click(function(){
+        var targID = this.id.replace("_btn","");
+        scrolly(targID);
+    });
     
     // Links open modal items based on button id
     $('a').not('[href]').click(function(){
@@ -49,13 +43,15 @@ $(document).ready(function(){
 
 // Smoothly scroll to target element
 function scrolly(targetElement){
+    var edgeOffset = $('nav').height();
+    console.log(edgeOffset);
+    container = document.getElementById("container");
+    containScroller = zenscroll.createScroller(container, scrollDuration, edgeOffset);
+
     var target = document.getElementById(targetElement);
      
     // Stops the button for a while
-    $(':button').prop('disabled', true);
-    containScroller.center(target, scrollDuration, 0, function(){
-        $(':button').prop('disabled', false);
-    });
+    containScroller.to(target, scrollDuration);
 
 }
 

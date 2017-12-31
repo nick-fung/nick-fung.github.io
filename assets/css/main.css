@@ -20,7 +20,9 @@ html{
     font-family: Raleway, Roboto, Times;
 }
 
-body, .smooth-container { scroll-behavior: smooth }
+body {
+    margin: 0;
+}
 
 p{
     font-size: 1.1em;
@@ -112,8 +114,6 @@ nav > button:hover{
     max-width: 500px;
     width: 95%;
     color: grey;
-    height: 250vh;
-    min-height: 1500px;
     margin: 70vh auto 10vh auto;
     padding: 5% 2% 3% 2%;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
@@ -122,6 +122,14 @@ nav > button:hover{
 .flex_item{
     text-align: center;
     width: 90%; 
+}
+
+#experience, #projects {
+    margin-top: 150px;
+}
+
+#contact {
+    margin-top: 50px;
 }
 
 .logo{
