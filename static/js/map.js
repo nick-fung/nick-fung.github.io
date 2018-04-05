@@ -25,7 +25,7 @@ function init(){
             stylers: [{ visibility: 'off' }]  // Turn off bus stations, train stations, etc.
         }],
         zoomControlOptions: {
-            position: google.maps.ControlPosition.LEFT_BOTTOM
+            position: google.maps.ControlPosition.LEFT_CENTER
         },
         mapTypeControl: false,
         streetViewControl: false,
@@ -56,7 +56,7 @@ function init(){
         map.panBy( 0, panAmount );
     } );
 
-    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push( panControl );
+    map.controls[google.maps.ControlPosition.LEFT_CENTER].push( panControl );
 
     var manual = function() {
         window.clearInterval(refreshHandler);
