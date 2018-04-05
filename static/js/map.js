@@ -24,10 +24,7 @@ function init(){
             featureType: 'transit.station',
             stylers: [{ visibility: 'off' }]  // Turn off bus stations, train stations, etc.
         }],
-        zoomControlOptions: {
-            position: google.maps.ControlPosition.TOP_LEFT,
-            style: google.maps.ZoomControlStyle.LARGE,
-        },
+        zoomControl: false,
         mapTypeControl: false,
         streetViewControl: false,
     });
@@ -40,6 +37,22 @@ function init(){
     var auto = function() {
         refreshHandler = setInterval(loadMostRecent, 5000)
     }
+    var zoomIn = function(){
+        map.setZoom(map.getZoom() + 1);
+    }
+    var zoomOut = function(){
+        map.setZoom(map.getZoom() - 1);
+    }
+    
+    var zoomInButtonDiv= document.createElement('div');
+    var zoomInControl = new ZoomControl(zoomInButtonDiv, map, "+", zoomIn);
+    zoomInButtonDiv.index = 3;
+    map.controls[google.maps.ControlPosition.LEFT_CENTER].push(zoomInButtonDiv);
+
+    var zoomOutButtonDiv= document.createElement('div');
+    var zoomOutControl = new ZoomControl(zoomOutButtonDiv, map, "-", zoomOut);
+    zoomOutButtonDiv.index = 4;
+    map.controls[google.maps.ControlPosition.LEFT_CENTER].push(zoomOutButtonDiv);
 
     // Create the DIV to hold the control and call the CenterControl()
     // constructor passing in this DIV.
@@ -47,12 +60,14 @@ function init(){
     var manualRefresh = new ManualRefresh(manualRefreshDiv, map, "Manual Refresh Positions", manual);
     manualRefreshDiv.index = 1;
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(manualRefreshDiv);
-    
+
     var manualRefreshDiv2 = document.createElement('div');
     var manualRefresh2 = new ManualRefresh(manualRefreshDiv2, map, "Auto Refresh", auto);
     manualRefreshDiv2.index = 2;
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(manualRefreshDiv2);
 
+    
+    
     // Auto refreshes
     loadMostRecent();
     refreshHandler = setInterval(loadMostRecent, 5000)
@@ -60,7 +75,7 @@ function init(){
 
 // Assuming the user is the park ranger, loads the most recent locations of each user
 function loadMostRecent(){
-    console.log("Refreshing");
+    //console.log("Refreshing");
     var query = firebase.database().ref('/users');
     query.once("value").then(function(snapshot) {
         // Iterate through users
@@ -75,12 +90,12 @@ function loadMostRecent(){
                     '<div id="siteNotice">'+
                     '</div>'+
                     '<h1 id="firstHeading" class="firstHeading">'+users[user]['name']+'</h1>'+
-                '<div id="bodyContent">'+
-                '<ul><li>Age: '+ users[user]['age'] +'</li></ul>'+
-                '<ul><li>Weight: '+ users[user]['age'] +'</li></ul>'+
-                '<ul><li>Height: '+ users[user]['height'] +'</li></ul>'+
-                '<ul><li>Medical Conditions: '+ users[user]['medicalConditions'] +'</li></ul>'+
-                '</div>'
+                    '<div id="bodyContent">'+
+                    '<ul><li>Age: '+ users[user]['age'] +'</li></ul>'+
+                    '<ul><li>Weight: '+ users[user]['age'] +'</li></ul>'+
+                    '<ul><li>Height: '+ users[user]['height'] +'</li></ul>'+
+                    '<ul><li>Medical Conditions: '+ users[user]['medicalConditions'] +'</li></ul>'+
+                    '</div>'
                 ;
 
                 infowindow = new google.maps.InfoWindow({
@@ -95,24 +110,28 @@ function loadMostRecent(){
                 mapObjList[user]={"circle": circle, "marker": marker};
             }
             else{
-                 mapObjList[user]["marker"].setPosition(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
-                 mapObjList[user]["circle"].setCenter(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
-                 mapObjList[user]["circle"].setRadius(1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
-                 
+                mapObjList[user]["marker"].setPosition(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
+                mapObjList[user]["circle"].setCenter(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
+                mapObjList[user]["circle"].setRadius(1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
+
                 if(mostRecentData["distress"]){
-                    if(!("distressHandler" in mapObjList[user])){
-                        mapObjList[obj]["circle"].distress=true;
-                        mapObjList[user].distressHandler = distressSignal(circle);
+                    if(!("distress" in mapObjList[user])){
+                    // console.log("distress"+user);
+                        
+                        mapObjList[user].distress = distressSignal(mapObjList[user].circle);
+                    }
+                    else{
+                        mapObjList[user].distress.setVisible(true);
                     }
                 }
                 else{
-                    if("distressHandler" in mapObjList[user]){
-                        clearInterval(mapObjList[user].distressHandler);
+                    if("distress" in mapObjList[user]){
+                        mapObjList[user].distress.setVisible(false);
+                        //clearInterval(mapObjList[user].distressHandler);
                     }
-                    mapObjList[obj]["circle"].distress=false;
                 }
             }
-            
+
             for (obj in mapObjList){
                 mapObjList[obj]["circle"].setMap(map);
                 mapObjList[obj]["marker"].setMap(map);
@@ -152,6 +171,39 @@ function ManualRefresh(controlDiv, map, name, fun)
 
 }
 
+function ZoomControl(controlDiv, map, name, fun) 
+{
+    // Set CSS for the control border.
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#fff';
+    controlUI.style.border = '2px solid #fff';
+    controlUI.style.borderRadius = '3px';
+    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginTop = '10px';
+    controlUI.style.marginBottom = '10px';
+    controlUI.style.marginLeft = '30px';
+    controlUI.style.width = '50px';
+    controlUI.style.height = '50px';
+    controlUI.style.textAlign = 'center';
+    controlUI.style.padding = '5px 5px';
+    controlDiv.appendChild(controlUI);
+
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.color = 'rgb(25,25,25)';
+    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText.style.fontSize = '50px';
+    controlText.style.lineHeight = '38px';
+    controlText.style.paddingLeft = '5px';
+    controlText.style.paddingRight = '5px';
+    controlText.innerHTML = name;
+    controlUI.appendChild(controlText);
+
+    controlUI.addEventListener('click', fun);
+
+}
+
 function createCircle(latitude, longitude, rad){
     circle = new google.maps.Circle({
         strokeColor: '#000000',
@@ -176,6 +228,7 @@ function createMarker(latitude, longitude){
 
 function distressSignal(baseCircle){
     var direction = 1;
+        var rMin = 5; 
     var distressCirc = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
@@ -184,24 +237,17 @@ function distressSignal(baseCircle){
         fillOpacity: 0.35,
         map: map,
         center: {lat: baseCircle.getCenter().lat(), lng: baseCircle.getCenter().lng()} ,
-        radius: 200
+        radius: 1
     });
-    var rMin = 5; 
-    return setInterval(function() {
+    setInterval(function() {
         var rMax = baseCircle.getRadius();
         var radius = distressCirc.getRadius();
-        if (!baseCircle.distress){
-            distressCirc.setMap(null);
-            distressCirc=null;
-            clearInterval(interval);
-        }
-        else{
-            if (radius >= rMax || radius*1.2>rMax)
-                radius = rMin;
-            distressCirc.setRadius(radius*1.2);
-        }
+        if (radius >= rMax || radius*1.2>rMax)
+            radius = rMin;
+        distressCirc.setRadius(radius*1.2);
     }, 50);
-    
-    return interval;
+    return distressCirc;
 }
+
+
 init();
