@@ -10,6 +10,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var markers = [];
 var circles = [];
+var mapObjList = []
 var ubc = {lat: 49.262427, lng: -123.247748};
 var refreshHandler;
 
@@ -23,12 +24,10 @@ function init(){
             featureType: 'transit.station',
             stylers: [{ visibility: 'off' }]  // Turn off bus stations, train stations, etc.
         }],
-        //disableDoubleClickZoom: true,
         zoomControlOptions: {
             position: google.maps.ControlPosition.LEFT_BOTTOM
         },
         mapTypeControl: false,
-        //scaleControl: boolean,
         streetViewControl: false,
     });
     var panControl = document.createElement( 'div' );
@@ -90,65 +89,66 @@ function loadMostRecent(){
     console.log("Refreshing");
     var query = firebase.database().ref('/users');
     query.once("value").then(function(snapshot) {
-        // Clears all markers
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(null);
-            delete markers[i];
-            circles[i].setMap(null);
-            delete circles[i];
-        }
-        markers=[];
-        circles=[];
         // Iterate through users
         users = snapshot.val();
         for (var user in users){
             mostRecentData = users[user]['mostRecent'];
-            circles.push(new google.maps.Circle({
-                strokeColor: '#000000',
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillOpacity: 0,
-                map: map,
-                center: {lat: mostRecentData['lat'], lng: mostRecentData['lng']},
-                radius: 1.4*(Date.now()/1000-40-mostRecentData['timestamp'])
-            }))
-            marker = new google.maps.Marker({
-                position: {lat: mostRecentData['lat'], lng: mostRecentData['lng']},
-                map: map,
-            });
-
-            var contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '</div>'+
-                '<h1 id="firstHeading" class="firstHeading">'+user+'</h1>'
-                // '<div id="bodyContent">'+
-                // '<p></p>'+
-                // '</div></div>'
+            // Handles the case where a new user is added
+            if (!(user in mapObjList)){
+                circle = createCircle(mostRecentData['lat'], mostRecentData['lng'], 1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
+                marker = createMarker(mostRecentData['lat'], mostRecentData['lng']);
+                contentString = '<div id="content">'+
+                    '<div id="siteNotice">'+
+                    '</div>'+
+                    '<h1 id="firstHeading" class="firstHeading">'+users[user]['name']+'</h1>'+
+                '<div id="bodyContent">'+
+                '<ul><li>Age: '+ users[user]['age'] +'</li></ul>'+
+                '<ul><li>Weight: '+ users[user]['age'] +'</li></ul>'+
+                '<ul><li>Height: '+ users[user]['height'] +'</li></ul>'+
+                '<ul><li>Medical Conditions: '+ users[user]['medicalConditions'] +'</li></ul>'+
+                '</div>'
                 ;
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
+                infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
 
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
-
-            markers.push(marker);
-
-        }
-        
-        
-        // Sets new markers on map
-        for (var i = 0; i < markers.length; i++) {
-            markers[i].setMap(map);
-            circles[i].setMap(map);
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+                circle.setMap(map);
+                marker.setMap(map);
+                mapObjList[user]={"circle": circle, "marker": marker};
+            }
+            else{
+                 mapObjList[user]["marker"].setPosition(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
+                 mapObjList[user]["circle"].setCenter(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
+                 mapObjList[user]["circle"].setRadius(1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
+                 
+                // if(mostRecentData["distress"]){
+                    // if(!("distressHandler" in mapObjList[user])){
+                        // mapObjList[obj]["circle"].distress=true;
+                        // mapObjList[user].distressHandler = distressSignal(circle);
+                    // }
+                // }
+                // else{
+                    // if("distressHandler" in mapObjList[user]){
+                        // clearInterval(mapObjList[user].distressHandler);
+                    // }
+                    // mapObjList[obj]["circle"].distress=false;
+                // }
+            }
+            
+            for (obj in mapObjList){
+                mapObjList[obj]["circle"].setMap(map);
+                mapObjList[obj]["marker"].setMap(map);
+            }
         }
     });
 }
 
-function ManualRefresh(controlDiv, map, name, fun) {
-
+function ManualRefresh(controlDiv, map, name, fun) 
+{
     // Set CSS for the control border.
     var controlUI = document.createElement('div');
     controlUI.style.backgroundColor = '#fff';
@@ -173,8 +173,60 @@ function ManualRefresh(controlDiv, map, name, fun) {
     controlText.innerHTML = name;
     controlUI.appendChild(controlText);
 
-    // Setup the click event listeners: simply set the map to Chicago.
     controlUI.addEventListener('click', fun);
 
+}
+
+function createCircle(latitude, longitude, rad){
+    circle = new google.maps.Circle({
+        strokeColor: '#000000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillOpacity: 0,
+        map: map,
+        center: {lat: latitude, lng: longitude} ,
+        radius: rad,
+    });
+    circle.distress = false;
+    return circle;
+
+}
+
+function createMarker(latitude, longitude){
+    return new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map,
+    });
+}
+
+function distressSignal(baseCircle){
+    var direction = 1;
+    var distressCirc = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: {lat: baseCircle.getCenter().lat(), lng: baseCircle.getCenter().lng()} ,
+        radius: 200
+    });
+    var rMin = 5; 
+    return setInterval(function() {
+        var rMax = baseCircle.getRadius();
+        var radius = distressCirc.getRadius();
+        if (!baseCircle.distress){
+            distressCirc.setMap(null);
+            distressCirc=null;
+            clearInterval(interval);
+        }
+        else{
+            if (radius >= rMax || radius*1.2>rMax)
+                radius = rMin;
+            distressCirc.setRadius(radius*1.2);
+        }
+    }, 50);
+    
+    return interval;
 }
 init();
