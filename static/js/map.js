@@ -223,7 +223,6 @@ function createMarker(latitude, longitude){
 
 function distressSignal(baseCircle){
     var direction = 1;
-        var rMin = 5; 
     var distressCirc = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
@@ -238,7 +237,7 @@ function distressSignal(baseCircle){
         var rMax = baseCircle.getRadius();
         var radius = distressCirc.getRadius();
         if (radius >= rMax || radius*1.2>rMax)
-            radius = rMin;
+            radius = 1;
         distressCirc.setRadius(radius+1);
         distressCirc.setCenter(baseCircle.getCenter());
         console.log(radius);
