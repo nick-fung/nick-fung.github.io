@@ -95,9 +95,7 @@ function loadMostRecent(){
                     '<ul><li>Weight: '+ users[user]['age'] +'</li></ul>'+
                     '<ul><li>Height: '+ users[user]['height'] +'</li></ul>'+
                     '<ul><li>Medical Conditions: '+ users[user]['medicalConditions'] +'</li></ul>'+
-                    '</div>'
-                ;
-
+                    '</div>';
                 infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
