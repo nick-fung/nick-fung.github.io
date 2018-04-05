@@ -25,38 +25,39 @@ function init(){
             stylers: [{ visibility: 'off' }]  // Turn off bus stations, train stations, etc.
         }],
         zoomControlOptions: {
-            position: google.maps.ControlPosition.LEFT_CENTER
+            position: google.maps.ControlPosition.TOP_LEFT,
+            style: google.maps.ZoomControlStyle.LARGE,
         },
         mapTypeControl: false,
         streetViewControl: false,
     });
-    var panControl = document.createElement( 'div' );
-
-    panControl.className = 'panControls';
-    var directions = ['North', 'West', 'East', 'South'];
-    var pan = [];
-    directions.forEach( function( item ) {
-        pan[item] = document.createElement( 'div' );
-        pan[item].className = 'panControl ' + item;
-        pan[item].innerHTML = '<img src="static/js/pan_arrow.png" />';
-        panControl.appendChild( pan[item] );
-    } );
-
-    var panAmount = 120;
-    pan['North'].addEventListener( 'click', function( ) {
-        map.panBy( 0, -panAmount );
-    } );
-    pan['West'].addEventListener( 'click', function( ) {
-        map.panBy( -panAmount, 0 );
-    } );
-    pan['East'].addEventListener( 'click', function( ) {
-        map.panBy( panAmount, 0 );
-    } );
-    pan['South'].addEventListener( 'click', function( ) {
-        map.panBy( 0, panAmount );
-    } );
-
-    map.controls[google.maps.ControlPosition.LEFT_CENTER].push( panControl );
+    // var panControl = document.createElement( 'div' );
+//
+    // panControl.className = 'panControls';
+    // var directions = ['North', 'West', 'East', 'South'];
+    // var pan = [];
+    // directions.forEach( function( item ) {
+        // pan[item] = document.createElement( 'div' );
+        // pan[item].className = 'panControl ' + item;
+        // pan[item].innerHTML = '<img src="static/js/pan_arrow.png" />';
+        // panControl.appendChild( pan[item] );
+    // } );
+//
+    // var panAmount = 120;
+    // pan['North'].addEventListener( 'click', function( ) {
+        // map.panBy( 0, -panAmount );
+    // } );
+    // pan['West'].addEventListener( 'click', function( ) {
+        // map.panBy( -panAmount, 0 );
+    // } );
+    // pan['East'].addEventListener( 'click', function( ) {
+        // map.panBy( panAmount, 0 );
+    // } );
+    // pan['South'].addEventListener( 'click', function( ) {
+        // map.panBy( 0, panAmount );
+    // } );
+//
+    // map.controls[google.maps.ControlPosition.LEFT_CENTER].push( panControl );
 
     var manual = function() {
         window.clearInterval(refreshHandler);
@@ -156,6 +157,7 @@ function ManualRefresh(controlDiv, map, name, fun)
     controlUI.style.borderRadius = '3px';
     controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
     controlUI.style.cursor = 'pointer';
+    controlUI.style.marginTop = '22px';
     controlUI.style.marginBottom = '22px';
     controlUI.style.marginLeft = '10px';
     controlUI.style.textAlign = 'center';
