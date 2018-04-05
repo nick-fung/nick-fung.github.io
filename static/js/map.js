@@ -244,7 +244,7 @@ function distressSignal(baseCircle){
             radius = rMin;
         distressCirc.setRadius(radius+1);
         distressCirc.setCenter(baseCircle.getCenter());
-    }, 150);
+    }, 1500);
     return distressCirc;
 }
 
