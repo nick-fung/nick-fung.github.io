@@ -35,6 +35,7 @@ function init(){
     }
 
     var auto = function() {
+        loadMostRecent();
         refreshHandler = setInterval(loadMostRecent, 5000)
     }
     var zoomIn = function(){
@@ -65,8 +66,6 @@ function init(){
     var manualRefresh2 = new ManualRefresh(manualRefreshDiv2, map, "Auto Refresh", auto);
     manualRefreshDiv2.index = 2;
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(manualRefreshDiv2);
-
-    
     
     // Auto refreshes
     loadMostRecent();
@@ -243,10 +242,10 @@ function distressSignal(baseCircle){
             // console.log("resetting circle");
             radius = 1;
         }
-        distressCirc.setRadius(radius+1);
+        distressCirc.setRadius(radius+3);
         distressCirc.setCenter(baseCircle.getCenter());
         // console.log(radius);
-    }, 500);
+    }, 100);
     return distressCirc;
 }
 
