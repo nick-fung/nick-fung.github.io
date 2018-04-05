@@ -79,33 +79,36 @@ function loadMostRecent(){
     var query = firebase.database().ref('/users');
     query.once("value").then(function(snapshot) {
         // Iterate through users
+        //var infowindow;
         users = snapshot.val();
         for (var user in users){
             mostRecentData = users[user]['mostRecent'];
             // Handles the case where a new user is added
             if (!(user in mapObjList)){
-                circle = createCircle(mostRecentData['lat'], mostRecentData['lng'], 1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
-                marker = createMarker(mostRecentData['lat'], mostRecentData['lng']);
-                contentString = '<div id="content">'+
+                var circle = createCircle(mostRecentData['lat'], mostRecentData['lng'], 1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
+                var marker = createMarker(mostRecentData['lat'], mostRecentData['lng']);
+                var contentString = '<div id="content">'+
                     '<div id="siteNotice">'+
                     '</div>'+
                     '<h1 id="firstHeading" class="firstHeading">'+users[user]['name']+'</h1>'+
                     '<div id="bodyContent">'+
                     '<ul><li>Age: '+ users[user]['age'] +'</li></ul>'+
-                    '<ul><li>Weight: '+ users[user]['age'] +'</li></ul>'+
+                    '<ul><li>Weight: '+ users[user]['weight'] +'</li></ul>'+
                     '<ul><li>Height: '+ users[user]['height'] +'</li></ul>'+
                     '<ul><li>Medical Conditions: '+ users[user]['medicalConditions'] +'</li></ul>'+
                     '</div>';
-                infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
 
-                marker.addListener('click', function() {
-                    infowindow.open(map, marker);
-                });
                 circle.setMap(map);
                 marker.setMap(map);
-                mapObjList[user]={"circle": circle, "marker": marker};
+                
+                mapObjList[user]={"circle": circle, "marker": marker, "info": new google.maps.InfoWindow({content: contentString})};
+
+                google.maps.event.addListener(marker, 'click', (function(marker, user) {
+                    return function() {
+                        mapObjList[user].info.open(map, marker);
+                    }
+                })(marker, user));
+
             }
             else{
                 mapObjList[user]["marker"].setPosition(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
@@ -237,12 +240,12 @@ function distressSignal(baseCircle){
         var rMax = baseCircle.getRadius();
         var radius = distressCirc.getRadius();
         if (radius >= rMax){
-            console.log("resetting circle");
+            // console.log("resetting circle");
             radius = 1;
         }
         distressCirc.setRadius(radius+1);
         distressCirc.setCenter(baseCircle.getCenter());
-        console.log(radius);
+        // console.log(radius);
     }, 500);
     return distressCirc;
 }
