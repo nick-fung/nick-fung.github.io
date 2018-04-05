@@ -244,8 +244,9 @@ function distressSignal(baseCircle){
         var radius = distressCirc.getRadius();
         if (radius >= rMax || radius*1.2>rMax)
             radius = rMin;
-        distressCirc.setRadius(radius*1.2);
-    }, 50);
+        distressCirc.setRadius(radius+2);
+        distressCirc.setCenter(baseCircle.getCenter());
+    }, 200);
     return distressCirc;
 }
 
