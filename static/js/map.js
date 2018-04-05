@@ -114,7 +114,6 @@ function loadMostRecent(){
 
                 if(mostRecentData["distress"]){
                     if(!("distress" in mapObjList[user])){
-                    // console.log("distress"+user);
                         
                         mapObjList[user].distress = distressSignal(mapObjList[user].circle);
                     }
@@ -125,7 +124,6 @@ function loadMostRecent(){
                 else{
                     if("distress" in mapObjList[user]){
                         mapObjList[user].distress.setVisible(false);
-                        //clearInterval(mapObjList[user].distressHandler);
                     }
                 }
             }
@@ -212,7 +210,6 @@ function createCircle(latitude, longitude, rad){
         center: {lat: latitude, lng: longitude} ,
         radius: rad,
     });
-    circle.distress = false;
     return circle;
 
 }
