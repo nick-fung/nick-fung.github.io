@@ -236,8 +236,10 @@ function distressSignal(baseCircle){
     setInterval(function() {
         var rMax = baseCircle.getRadius();
         var radius = distressCirc.getRadius();
-        if (radius >= rMax)
+        if (radius >= rMax){
+            console.log("resetting circle");
             radius = 1;
+        }
         distressCirc.setRadius(radius+1);
         distressCirc.setCenter(baseCircle.getCenter());
         console.log(radius);
