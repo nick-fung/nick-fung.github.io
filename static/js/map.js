@@ -31,36 +31,9 @@ function init(){
         mapTypeControl: false,
         streetViewControl: false,
     });
-    // var panControl = document.createElement( 'div' );
-//
-    // panControl.className = 'panControls';
-    // var directions = ['North', 'West', 'East', 'South'];
-    // var pan = [];
-    // directions.forEach( function( item ) {
-        // pan[item] = document.createElement( 'div' );
-        // pan[item].className = 'panControl ' + item;
-        // pan[item].innerHTML = '<img src="static/js/pan_arrow.png" />';
-        // panControl.appendChild( pan[item] );
-    // } );
-//
-    // var panAmount = 120;
-    // pan['North'].addEventListener( 'click', function( ) {
-        // map.panBy( 0, -panAmount );
-    // } );
-    // pan['West'].addEventListener( 'click', function( ) {
-        // map.panBy( -panAmount, 0 );
-    // } );
-    // pan['East'].addEventListener( 'click', function( ) {
-        // map.panBy( panAmount, 0 );
-    // } );
-    // pan['South'].addEventListener( 'click', function( ) {
-        // map.panBy( 0, panAmount );
-    // } );
-//
-    // map.controls[google.maps.ControlPosition.LEFT_CENTER].push( panControl );
 
     var manual = function() {
-        window.clearInterval(refreshHandler);
+        clearInterval(refreshHandler);
         loadMostRecent();
     }
 
@@ -126,18 +99,18 @@ function loadMostRecent(){
                  mapObjList[user]["circle"].setCenter(new google.maps.LatLng(mostRecentData['lat'], mostRecentData['lng']));
                  mapObjList[user]["circle"].setRadius(1.4*(Date.now()/1000-40-mostRecentData['timestamp']));
                  
-                // if(mostRecentData["distress"]){
-                    // if(!("distressHandler" in mapObjList[user])){
-                        // mapObjList[obj]["circle"].distress=true;
-                        // mapObjList[user].distressHandler = distressSignal(circle);
-                    // }
-                // }
-                // else{
-                    // if("distressHandler" in mapObjList[user]){
-                        // clearInterval(mapObjList[user].distressHandler);
-                    // }
-                    // mapObjList[obj]["circle"].distress=false;
-                // }
+                if(mostRecentData["distress"]){
+                    if(!("distressHandler" in mapObjList[user])){
+                        mapObjList[obj]["circle"].distress=true;
+                        mapObjList[user].distressHandler = distressSignal(circle);
+                    }
+                }
+                else{
+                    if("distressHandler" in mapObjList[user]){
+                        clearInterval(mapObjList[user].distressHandler);
+                    }
+                    mapObjList[obj]["circle"].distress=false;
+                }
             }
             
             for (obj in mapObjList){
