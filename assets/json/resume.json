@@ -78,7 +78,7 @@
       "url": "https://www.nserc-crsng.gc.ca/students-etudiants/pg-cs/cgsm-bescm_eng.asp",
       "summary": ""
     },
-        {
+    {
       "title": "Mitacs Accelerate Fellowship",
       "date": "2019",
       "awarder": "Mitacs",
@@ -141,28 +141,13 @@
       "name": "Data and ML Tools",
       "level": "Advanced",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Python",
-        "PyTorch",
-        "Tensorflow",
-        "NumPy",
-        "numba",
-        "Pandas",
-        "scikit-learn",
-        "matplotlib"
-      ]
+      "keywords": ["Python", "PyTorch", "Tensorflow", "NumPy", "numba", "Pandas", "scikit-learn", "matplotlib"]
     },
     {
       "name": "DevOps",
       "level": "Intermediate",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Docker",
-        "Kubernetes",
-        "GitHub Actions",
-        "AKS",
-        "On-Prem"
-      ]
+      "keywords": ["Docker", "Kubernetes", "GitHub Actions", "AKS", "On-Prem"]
     },
     {
       "name": "Technical Skills",
@@ -184,15 +169,7 @@
       "name": "Misc. Programming Tools and Languages",
       "level": "Beginner-Intermediate",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "C/C++",
-        "Assembly",
-        "Matlab",
-        "Julia",
-        "Rust",
-        "HTML/CSS",
-        "Javascript"
-      ]
+      "keywords": ["C/C++", "Assembly", "Matlab", "Julia", "Rust", "HTML/CSS", "Javascript"]
     }
   ],
   "languages": [
@@ -212,32 +189,20 @@
       "icon": ""
     }
   ],
-  "interests": [
-  ],
-  "references": [
-  ],
+  "interests": [],
+  "references": [],
   "projects": [
     {
       "name": "Variational Autoencoders: A Hands-Off Approach to Volatility",
       "summary": "A volatility surface is an important tool for pricing and hedging derivatives. It describes the market price of an option on an asset as a function of the option's strike price and maturity. Raw option data is collected and processed, then used to train a neural network which can be used to model observed volatility surfaces as well as generate synthetic surfaces for the purposes of risk management.",
-      "highlights": [
-        "Finance",
-        "Quantitative Analysis",
-        "Machine Learning",
-        "Generative Modelling"
-      ],
+      "highlights": ["Finance", "Quantitative Analysis", "Machine Learning", "Generative Modelling"],
       "startDate": "05/20",
       "url": "https://www.fia.org/marketvoice/articles/riskfuel-stop-messing-your-volatility-surface"
     },
     {
       "name": "Beating the Odds: Horse Racing in Hong Kong",
       "summary": "Horse racing is a lucrative business in Hong Kong, with annual turnover reaching 305 bn HKD (39 bn USD) in 2022. While the outcomes of each race tend to be largely random, several million web pages were scraped to identify key predictors of winning horses. Although various models was fit, the original data was too high dimensional for meaningful predictions. Future work may include improved feature engineering and dimensionality reduction, improved modelling, and collecting more contextual non-tabularized data.",
-      "highlights": [
-        "Web Scraping",
-        "Data Analysis",
-        "Feature Engineering",
-        "Machine Learning"
-      ],
+      "highlights": ["Web Scraping", "Data Analysis", "Feature Engineering", "Machine Learning"],
       "startDate": "05/18"
     }
   ]
