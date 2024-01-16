@@ -1,0 +1,196 @@
+{
+  "basics": {
+    "name": "Nicholas Fung",
+    "label": "ML Engineer and Data Scientist",
+    "image": "",
+    "email": "contact at nickfung dot ca",
+    "summary": "ML Engineer and Data Scientist with a MASc from UofT and a BASc from UBC.",
+    "profiles": [
+      {
+        "network": "Instagram",
+        "username": "nickfung247",
+        "url": "https://www.instagram.com/nickfung247/"
+      },
+      {
+        "network": "Linkedin",
+        "username": "fungnick",
+        "url": "https://www.linkedin.com/fungnick/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Riskfuel Analytics",
+      "position": "ML Engineer",
+      "url": "https://riskfuel.com",
+      "startDate": "9/21",
+      "endDate": "12/23",
+      "summary": "Riskfuel uses deep learning to replicate complex derivative pricers written by quants at banks, with the goal of providing accurate approximations at a fraction of the cost for the purpose of real-time trading and P&L calculations. I was responsible for developing end-to-end ML pipelines, including synthetic data generation, training, validation, and delivering models to clients.",
+      "highlights": [
+      ]
+    },
+    {
+      "name": "Non-Invasive Surgical Innovations",
+      "position": "Software Engineer",
+      "startDate": "4/18",
+      "endDate": "8/18",
+      "summary": "NISI develops non-invasive surgical robotics. During my internship, I was responsible for implementing real-time video denoising, as well as researching Computer Vision techniques. I developed a prototype using the YOLO v3 algorithm to detect cancerous tumors.",
+      "highlights": [
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "nwPlus",
+      "position": "Treasurer",
+      "url": "https://nwplus.io/",
+      "startDate": "7/17",
+      "endDate": "4/19",
+      "summary": "nwPlus organizes several collegiate hackathons, including nwHacks, one of the largest hackathons in the Pacific Northwest, with over 600+ attendees. I was the Logistics Coordinator and later the Treasurer for the university club.",
+      "highlights": [
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Toronto, Zurich, Switzerland",
+      "location": "Zurich, Switzerland",
+      "url": "https://www.uzh.ch/",
+      "area": "Software Development",
+      "studyType": "PhD",
+      "startDate": "1905-01-01",
+      "endDate": "1905-01-01",
+      "score": "10",
+      "courses": [
+        "Theory of Relativity"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Nobel Prize in Physics",
+      "date": "1921-11-01",
+      "awarder": "Royal Swedish Academy of Sciences",
+      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
+      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Machine Learning",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-location-dot"
+    },
+    {
+      "name": "Quantum Computing",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-tag"
+    },
+    {
+      "name": "Quantum Information",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-envelope"
+    },
+    {
+      "name": "Quantum Cryptography",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-hashtag"
+    },
+    {
+      "name": "Quantum Communication",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-calendar"
+    },
+    {
+      "name": "Quantum Teleportation",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-clipboard-check"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Variational Autoencoders: A Hands-Off Approach to Volatility",
+      "publisher": "The Journal of Financial Data Science",
+      "releaseDate": "April 22, 2022",
+      "url": "https://www.pm-research.com/content/iijjfds/early/2022/04/22/jfds20221093.full"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Physics",
+      "level": "Master",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Quantum Mechanics",
+        "Quantum Computing",
+        "Quantum Information",
+        "Quantum Cryptography",
+        "Quantum Communication",
+        "Quantum Teleportation"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent",
+      "icon": ""
+    }
+  ],
+  "interests": [
+    {
+      "name": "Physics",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Quantum Mechanics",
+        "Quantum Computing",
+        "Quantum Information",
+        "Quantum Cryptography",
+        "Quantum Communication",
+        "Quantum Teleportation"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    },
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-thumbtack",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Quantum Computing",
+      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
+      "highlights": [
+        "Quantum Teleportation",
+        "Quantum Cryptography"
+      ],
+      "startDate": "2018-01-01",
+      "endDate": "2018-01-01",
+      "url": "https://example.com"
+    }
+  ]
+}
