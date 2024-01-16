@@ -19,4 +19,4 @@ ML engineer and data scientist with experience in applications in quantitative f
 
 As a self-proclaimed nerd, I'm driven by my deep and incessant need to learn more about the world, as well as a desire to build things that have a positive and lasting impact on people’s lives.
 
-My *oh-so-unique* hobbies include: Coffee, board games, climbing, Brazillian jiu-jitsu, working out, travelling, and personal finance.
+My _oh-so-unique_ hobbies include: Coffee, board games, climbing, Brazillian jiu-jitsu, working out, travelling, and personal finance.
