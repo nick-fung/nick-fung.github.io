@@ -15,8 +15,8 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-ML engineer and data scientist with experience in applications in quantitative finance, as well as a background studying computer engineering at UofT and UBC.
+ML engineer and data scientist with experience in applications in quantitative finance, and a background in computer engineering.
 
-I'm driven by my deep need to learn more about the world, as well as a desire to build things that have a positive and lasting impact on people’s lives.
+I'm driven by my deep need to learn about the world, and a desire to build things that have a positive and lasting impact on people’s lives.
 
-My _oh-so-unique_ hobbies include: Coffee, board games, climbing, Brazillian jiu-jitsu, working out, travelling, and personal finance.
+My _oh-so-unique_ hobbies include: Coffee, board games, climbing, Brazillian jiu-jitsu, working out, cooking, travelling, and personal finance.

@@ -3,7 +3,7 @@
     "name": "Nicholas Fung",
     "label": "ML Engineer and Data Scientist",
     "image": "",
-    "email": "contact at nickfung dot ca",
+    "email": "contact<at>nickfung<dot>ca",
     "summary": "ML Engineer and Data Scientist with a MASc from UofT and a BASc from UBC.",
     "profiles": [
       {
@@ -204,7 +204,7 @@
       "name": "Beating the Odds: Horse Racing in Hong Kong",
       "summary": "Horse racing is a lucrative business in Hong Kong, with annual turnover reaching 305 bn HKD (39 bn USD) in 2022. While the outcomes of each race tend to be largely random, several million web pages were scraped to identify key predictors of winning horses. Although various models was fit, the original data was too high dimensional for meaningful predictions. Future work may include improved feature engineering and dimensionality reduction, improved modelling, and collecting more contextual non-tabularized data.",
       "highlights": ["Web Scraping", "Data Analysis", "Feature Engineering", "Machine Learning"],
-      "startDate": "07.18",
+      "startDate": "07.2018",
       "endDate": "08.2018"
     }
   ],
@@ -213,8 +213,8 @@
       "organization": "nwPlus",
       "position": "Treasurer",
       "url": "https://nwplus.io/",
-      "startDate": "7.17",
-      "endDate": "4.19",
+      "startDate": "7.2017",
+      "endDate": "4.2019",
       "summary": "nwPlus organizes several collegiate hackathons, including nwHacks, one of the largest hackathons in the Pacific Northwest, with over 600+ attendees. I was the Logistics Coordinator and later the Treasurer for the university club.",
       "highlights": []
     }
