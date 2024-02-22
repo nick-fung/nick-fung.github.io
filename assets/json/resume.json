@@ -26,7 +26,7 @@
       "location": "Toronto, Canada",
       "startDate": "9.2021",
       "endDate": "12.2023",
-      "summary": "Riskfuel uses deep learning to replicate complex derivative pricers written by quants at banks, with the goal of providing accurate approximations at a fraction of the cost for the purpose of real-time trading and P&L calculations. I was responsible for developing end-to-end ML pipelines, including synthetic data generation, training, validation, and delivering models to clients.",
+      "summary": "Riskfuel uses deep learning to replicate complex derivative pricers written by quants at banks, with the goal of providing accurate approximations at a fraction of the cost for the purpose of real-time trading and P&L calculations.",
       "highlights": []
     },
     {
@@ -35,7 +35,7 @@
       "startDate": "4.2018",
       "endDate": "8.2018",
       "location": "Hong Kong",
-      "summary": "NISI develops non-invasive surgical robotics. I was responsible for implementing real-time video denoising, as well as researching Computer Vision techniques. I developed a prototype using the YOLO v3 algorithm to detect cancerous tumors.",
+      "summary": "NISI develops non-invasive surgical robotics. I was responsible for implementing real-time video denoising, as well as researching Computer Vision techniques.",
       "highlights": []
     },
     {
@@ -44,7 +44,7 @@
       "startDate": "4.2016",
       "endDate": "8.2016",
       "location": "Hong Kong",
-      "summary": "CKPH is a multinational company that deals primarily with property development. I was responsible the quality assurance of the new employee attendance system as well as automating various manual tasks . Futher, I provided IT support for a large population of on and off-site staff, including system upgrades and debugging.",
+      "summary": "CKPH is a multinational company that deals primarily with property development.",
       "highlights": []
     }
   ],

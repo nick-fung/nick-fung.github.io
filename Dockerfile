@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:latest as base
 ENV DEBIAN_FRONTEND noninteractive
 
 Label MAINTAINER Amir Pourmand
@@ -39,3 +39,13 @@ EXPOSE 8080
 COPY bin/entry_point.sh /tmp/entry_point.sh
 
 CMD ["/tmp/entry_point.sh"]
+
+FROM base as builder
+
+COPY . .
+RUN rm -f Gemfile.lock
+RUN bundle exec jekyll build --lsi
+
+FROM nginx as server
+COPY --from=builder /srv/jekyll/_site  $HOME/personal/_site
+COPY personal.conf /etc/nginx/conf.d/personal.conf
